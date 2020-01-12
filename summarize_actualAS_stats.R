@@ -1,6 +1,6 @@
 ## sum stats for actual AS events
 
-wdir <- "/media/patricia/F7BB-1054/results_for_paper/"
+wdir <- "/media/patricia/as_paper/"
 setwd(wdir)
 
 species_folders <- list.dirs(recursive=F)
@@ -128,7 +128,7 @@ astypes_relative_all <- lapply(astypes_all,function(x){
 astypes_relative_all_matrix <- matrix(unlist(astypes_relative_all),nrow=7,ncol=7,byrow=F)
 colnames(astypes_relative_all_matrix) <- c("Ca","Cp","Cg","Af","Hc","Cn","Lc")
 
-pdf("/data/PhD/species_comparison_revision/acutalASpattern_relative.pdf")
+pdf("/data/species_comparison/acutalASpattern_relative.pdf")
 barplot(astypes_relative_all_matrix,main="Relative occurence of AS pattern for each species",
         xlab="Species",col=rainbow(7),beside=F,legend.text=astypes_names,
         xlim=c(0, ncol(astypes_relative_all_matrix) + 3),
