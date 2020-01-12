@@ -11,7 +11,7 @@ conditions <- list(control=control,stress=stress,infection=infection)
 
 
 #for(species in species_all){
-  input_path <- paste0("/data/PhD/species_comparison/",species,"/")
+  input_path <- paste0("/data/species_comparison/",species,"/")
 
   if(file.exists(input_path)){
     setwd(input_path)
@@ -76,55 +76,16 @@ conditions <- list(control=control,stress=stress,infection=infection)
 #}
 
   
-  species <- "A_fumigatus"
-  control <- c(1:3,13:14,17) 
-  stress <- c(4:12,15:16,18:21)
-  infection <- c()
-  
-  species <- "A_fumigatus+Af293"  ## only infection numbers are relevant
-  control <- c(1:3,17:18,21,26:31) 
-  stress <- c(4:12,19:20,22:25)
-  infection <- c(13:16)
-  
-  species <- "C_glabrata_kaemmer"
-  control <- c(4:7,13,19,25:27,34:36) 
-  stress <- c(1:3,28:33)
-  infection <- c(8:12,14:18,20:24)
-  
-  species <- "C_parapsilosis_kaemmer"
-  control <- c(3,5,9:10,14,18) 
-  stress <- c(1:2,4,6:8)
-  infection <- c(11:13,15:17,19:27)
-  
-  
-  species <- "C_neoformans"
-  control <- c(1:6,25:28,33:37) 
-  stress <- c(7:24,29:32,38:42)
-  infection <- c()
-  
-  
-  species <- "H_capsulatum"
-  control <- c(3:4,7:8) 
-  stress <- c()
-  infection <- c(1:2,5:6)
-  
-  species <- "L_corymbifera"
-  control <- c(1:3,10:12) 
-  stress <- c(4:9)
-  infection <- c(13,15)
-  
-  
   
 ## haploid for C.albicans
-  species <- "C_albicans_kaemmer"
-  ## for C_albicans_kaemmer
+  species <- "C_albicans"
   control <- c(1:2,5:6,9:10,13:14,17:18,21:22,57:59,95,101,107,113:128,153:160) 
   stress <- c(25:56,63:94,129:144,148:152)
   infection <- c(3:4,7:8,11:12,15:16,19:20,23:24,60:62,96:100,102:106,108:112,145:147)
   
   conditions <- list(control=control,stress=stress,infection=infection)
   
-  input_path <- paste0("/data/PhD/species_comparison/",species,"/")
+  input_path <- paste0("/data/species_comparison/",species,"/")
   
   if(file.exists(input_path)){
     setwd(input_path)
