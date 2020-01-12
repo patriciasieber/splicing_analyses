@@ -1,7 +1,7 @@
 
 ## read abundance of each transcript per sample
 
-## for L_corymbifera
+## for species Aspergillus fumigatus
 species <- "A_fumigatus"
 control <- c(1:3,13:14,17) 
 stress <- c(4:12,15:16,18:21)
@@ -10,7 +10,6 @@ infection <- c()
 conditions <- list(control=control,stress=stress,infection=infection)
 
 
-#for(species in species_all){
   input_path <- paste0("/data/species_comparison/",species,"/")
 
   if(file.exists(input_path)){
@@ -72,8 +71,7 @@ conditions <- list(control=control,stress=stress,infection=infection)
     print(paste("Average expressed genes",current_name,av_genes,sep=" "))
     print(paste("Average expressed transcripts",current_name,av_tr,sep=" "))
   }
-  
-#}
+ 
 
   
   
