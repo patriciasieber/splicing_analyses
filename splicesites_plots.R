@@ -1,8 +1,9 @@
 ## barplot for difference between used splicesites
 library(colorspace)
-setwd("/data/PhD/species_comparison_revision/")
 library(RColorBrewer)
 library(pheatmap)
+
+setwd("/data/species_comparison/")
 
 
 ## splice sites heatmap for all fungi and conditions ####
@@ -18,8 +19,6 @@ cneo <- c(97.69,2.05,0.26,NA,NA,NA,97.75,2.04,0.21)
 lcor <- c(96.78,2.97,0.24,96.78,2.98,0.24,96.78,2.97,0.24)
 hcap <- c(96.23,2.13,1.64,96.23,2.13,1.64,NA,NA,NA)
 
-#all <- c(afum,calbk,cglak,cpark,cneo,lcor,hcap)
-
 all <- c(afum,calb,calbk,cgla,cglak,cpar,cpark,cneo,lcor,hcap)
 matrix_all <- matrix(all,nrow=3)
 
@@ -31,7 +30,6 @@ matrix_all <- rbind(matrix_all,others)
 rownames(matrix_all) <- c("GT-AG", "GC-AG", "AT-AC","others")
 
 names_allss <- c("Af","Ca","CaK","Cg","CgK","Cp","CpK","Cn","Lc","Hc")
-#names_allss <- c("Af","Ca","Cg","Cp","Cn","Lc","Hc")
 
 names_allss <- unlist(lapply(names_allss,function(x){return(rep(x,3))}))
 conditions <- c("control","infection","stress")
@@ -53,13 +51,13 @@ colnames(log_matrix_all) <- all
 # 
 #heatmap(log_matrix_all, Rowv=NA, Colv=NA, col = brewer.pal(9, "Blues"), scale="column", margins=c(5,10))
 
-png("/data/PhD/species_comparison/splicesites_log.png",width=1600,height=300)
+png("/data/species_comparison/splicesites_log.png",width=1600,height=300)
 pheatmap(log_matrix_all,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=F,
          scale="none",display_numbers=T,margins=c(10,20))
 dev.off()
 
-png("/data/PhD/species_comparison/splicesites.png",width=1600,height=300)
+png("/data/species_comparison/splicesites.png",width=1600,height=300)
 pheatmap(matrix_all,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=F,
          scale="none",display_numbers=T,margins=c(10,20))
@@ -74,7 +72,7 @@ matrix_all_boolean <- as.vector(apply(matrix_all,2,function(x){
 matrix_all_woNA <- matrix_all[,matrix_all_boolean]
 
 
-png("/data/PhD/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
+png("/data/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
 pheatmap(matrix_all_woNA,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=T,
          scale="none",display_numbers=T,margins=c(10,20))
@@ -82,28 +80,13 @@ pheatmap(matrix_all_woNA,cellwidth=40,cellheight=40,width=1800,height=600,
 dev.off()
 
 
-png("/data/PhD/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
+png("/data/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
 pheatmap(matrix_all_woNA,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=T,
          scale="none",display_numbers=T,margins=c(10,20))
 dev.off()
 
-# log_matrix_all <- log10(matrix_all_woNA)
-# cols <- colnames(log_matrix_all)
-# log_matrix_all <- unlist(lapply(log_matrix_all,function(x){
-#   if(!is.finite(x)) x <- NA
-#   return(x)
-# }))
 
-# log_matrix_all <- matrix(log_matrix_all,nrow=4)
-# rownames(log_matrix_all) <- c("GT-AG", "GC-AG", "AT-AC","others")
-# colnames(log_matrix_all) <- cols
-# 
-# png("/data/PhD/species_comparison/splicesites_phylogeny_log.png",width=1200,height=300)
-# pheatmap(log_matrix_all,cellwidth=30,cellheight=40,width=1800,height=600,
-#          cluster_rows=F,cluster_cols=T,
-#          scale="none",display_numbers=T,margins=c(10,20))
-# dev.off()
 
 ##mean values for each species over all conditions
 names_unique <- unique(names_allss)
@@ -144,16 +127,14 @@ all <- paste(names_allss,conditions,sep="_")
 
 colnames(matrix_all) <- all
 
-#png("/data/PhD/species_comparison/splicesites_log.png",width=1600,height=300)
-svg("/data/PhD/species_comparison/splicesites_log.svg",width=18,height=4)
+svg("/data/species_comparison/splicesites_log.svg",width=18,height=4)
 pheatmap(log_matrix_all,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=F,
          scale="none",display_numbers=T,margins=c(10,20))
 dev.off()
 
 library(pheatmap)
-#png("/data/PhD/species_comparison/splicesites.png",width=1600,height=300)
-svg("/data/PhD/species_comparison/splicesites.svg",width=15,height=4)
+svg("/data/species_comparison/splicesites.svg",width=15,height=4)
 pheatmap(matrix_all,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=F,
          scale="none",display_numbers=T,margins=c(10,20))
@@ -169,8 +150,8 @@ matrix_all_boolean <- as.vector(apply(matrix_all,2,function(x){
 matrix_all_woNA <- matrix_all[,matrix_all_boolean]
 
 
-png("/data/PhD/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
-svg("/data/PhD/species_comparison/splicesites_phylogeny.svg",width=15,height=4)
+png("/data/species_comparison/splicesites_phylogeny.png",height=300,width=1200)
+svg("/data/species_comparison/splicesites_phylogeny.svg",width=15,height=4)
 pheatmap(matrix_all_woNA,cellwidth=40,cellheight=40,width=1800,height=600,
          cluster_rows=F,cluster_cols=T,
          scale="none",display_numbers=T,margins=c(10,20))
