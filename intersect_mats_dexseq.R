@@ -1,9 +1,9 @@
 library(gdata)
 
-location_as_analysis <- "/home/bioinformatik/Hacken2017/"
+location_as_analysis <- "/home/bioinformatik/aging/"
 
-location_as_analysis_dexseq <- "/home/bioinformatik/Hacken2017/output_dexseq/"
-location_as_analysis_mats <- "/home/bioinformatik/Hacken2017/output_mats/FDR0.05ILD0.1/"
+location_as_analysis_dexseq <- "/home/bioinformatik/aging/output_dexseq/"
+location_as_analysis_mats <- "/home/bioinformatik/aging/output_mats/FDR0.05ILD0.1/"
 
 species_mats <- c("Mus musculus","Homo sapiens","Danio rerio","Nothobranchius furzeri")
 species_dexseq <- c("M. musculus","H. sapiens","D. rerio","N. furzeri")
@@ -119,88 +119,4 @@ for(x in species_mats){
   }
 }
 close(ffile)
-
-
-
-## for gene depending on homology ####
-
-## read homology table
-# homology <- read.csv("/home/bioinformatik/Hacken2017/homology/homologyTable_mmu_hsa_dre_ensemblIDs_nfu_geneIDs.csv",
-#                      stringsAsFactors=F)
-# 
-# ## build subsets based on homology: hs_mm_dr_nf, hs_mm_dr, hs_mm, only mm
-# hom_hs_mm_dr_nf <- homology[(nchar(homology$hsa)>0 & nchar(homology$mmu)>0 & nchar(homology$dre)>0 & nchar(homology$nfu)>0),]
-# hom_hs_mm_dr <- homology[(nchar(homology$hsa)>0 & nchar(homology$mmu)>0 & nchar(homology$dre)>0 & nchar(homology$nfu)==0),]
-# hom_hs_mm <- homology[(nchar(homology$hsa)>0 & nchar(homology$mmu)>0 & nchar(homology$dre)==0 & nchar(homology$nfu)==0),]
-# hom_mm <- homology[(nchar(homology$hsa)==0 & nchar(homology$mmu)>0 & nchar(homology$dre)==0 & nchar(homology$nfu)==0),]
-# 
-# 
-# ## homology for each tissue ####
-# for(j in 1:length(all_tissues)){
-#   print(j)
-#   current_tissue <- all_tissues[j]
-#   
-#   current_gene_list <- gene_list[gene_list$Tissue == current_tissue,]
-#   
-#   current_species <- as.data.frame(table(current_gene_list$Species))
-#   current_species <- current_species[current_species$Freq != 0,]
-#   
-#   names_species <- as.character(current_species$Var1)
-#   
-#   species_gene_list <- lapply(names_species,function(y){
-#     tmp <- current_gene_list[current_gene_list$Species == y,]
-#     return(unique(tmp$GeneID))
-#   })
-#   
-#   #if(any(names_species == "Mus musculus")){
-#   ## divide list into sublists of homology
-#   #sub_hs_mm_dr_nf <- hom_hs_mm_dr_nf[hom_hs_mm_dr_nf$mmu.Ensembl.ID %in% as.character(species_gene_list[[which(names_species == "Mus musculus")]]),]
-#   #sub_hs_mm_dr <- hom_hs_mm_dr[hom_hs_mm_dr$mmu.Ensembl.ID %in% as.character(species_gene_list[[which(names_species == "Mus musculus")]]),]
-#   #sub_hs_mm <- hom_hs_mm[hom_hs_mm$mmu.Ensembl.ID %in% as.character(species_gene_list[[which(names_species == "Mus musculus")]]),]
-#   #sub_mm <- hom_mm[hom_mm$mmu.Ensembl.ID %in% as.character(species_gene_list[[which(names_species == "Mus musculus")]]),]
-#   
-#   
-#   ## nach species aufspalten und für jedes subset
-#   for(i in 1:length(names_species)){
-#     print(i)
-#     check_species <- names_species[i]
-#     check_species_shortcut <- species_shortcut[which(species == check_species)]
-#     current_gene_list <- as.character(species_gene_list[[i]])
-#     
-#     ## sub_hs_mm_dr_nf
-#     current_sub_hs_mm_dr_nf <- hom_hs_mm_dr_nf[hom_hs_mm_dr_nf[[which(names(hom_hs_mm_dr_nf) == check_species_shortcut)]] %in% current_gene_list,]$mmu.Ensembl.ID  
-#     if(length(current_sub_hs_mm_dr_nf)>0){
-#       ffile <- file(paste0("homology_sub_hs_mm_dr_nf_unique_genes_",current_tissue,"_",check_species_shortcut,".txt"),"w")
-#       writeLines(as.character(current_sub_hs_mm_dr_nf),ffile)
-#       close(ffile)
-#     }
-#     
-#     ## sub_hs_mm_dr
-#     current_sub_hs_mm_dr <- hom_hs_mm_dr[hom_hs_mm_dr[[which(names(hom_hs_mm_dr) == check_species_shortcut)]] %in% current_gene_list,]$mmu.Ensembl.ID  
-#     if(length(current_sub_hs_mm_dr)>0){
-#       ffile <- file(paste0("homology_sub_hs_mm_dr_unique_genes_",current_tissue,"_",check_species_shortcut,".txt"),"w")
-#       writeLines(as.character(current_sub_hs_mm_dr),ffile)
-#       close(ffile)
-#     }
-#     
-#     ## sub_hs_mm
-#     current_sub_hs_mm <- hom_hs_mm[hom_hs_mm[[which(names(hom_hs_mm) == check_species_shortcut)]] %in% current_gene_list,]$mmu.Ensembl.ID  
-#     if(length(current_sub_hs_mm)>0){
-#       ffile <- file(paste0("homology_sub_hs_mm_unique_genes_",current_tissue,"_",check_species_shortcut,".txt"),"w")
-#       writeLines(as.character(current_sub_hs_mm),ffile)
-#       close(ffile)
-#     }
-#     
-#     ## sub_mm
-#     current_sub_mm <- hom_mm[hom_mm[[which(names(hom_mm) == check_species_shortcut)]] %in% current_gene_list,]$mmu.Ensembl.ID  
-#     if(length(current_sub_mm)>0){
-#       ffile <- file(paste0("homology_sub_mm_unique_genes_",current_tissue,"_",check_species_shortcut,".txt"),"w")
-#       writeLines(as.character(current_sub_mm),ffile)
-#       close(ffile)
-#     }
-#   }
-#   #}
-# }
-# 
-# 
 
