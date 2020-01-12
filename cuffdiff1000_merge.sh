@@ -3,7 +3,7 @@
 ## merge results with perl scripts, remove runs
 
 ## modify:
-output_dir="/home/prak27/cuffdiff_test"
+output_dir="/home/cuffdiff_test"
 
 
 ## input
