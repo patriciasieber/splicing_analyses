@@ -1,30 +1,13 @@
 ## statistics of gene annotations
 
-setwd("/home/bioinformatik/Hacken2017/")
-#gtf <- read.csv("annots_original/Homo_sapiens.GRCh38.85.chr.gtf",header=F,skip=5,sep="\t")
-gtf <- read.csv("annots_original/Danio_rerio.GRCz10.release83.annotation.gtf",header=F,skip=5,sep="\t")
-
-table(gtf$V3)
-
-gtf_modified <- gtf[gtf$V3 != "Selenocysteine",]
-
-ffile <- file("annots_mats/Danio_rerio.GRCz10.release83.annotation.modified.gtf","w")
-writeLines(paste(gtf_modified$V1,gtf_modified$V2,gtf_modified$V3,gtf_modified$V4,gtf_modified$V5,
-                 gtf_modified$V6,gtf_modified$V7,gtf_modified$V8,gtf_modified$V9,sep="\t"),ffile)
-close(ffile)
-
-
-
+setwd("/home/bioinformatik/aging/")
 
 ## for mmu
-setwd("/home/bioinformatik/Hacken2017/")
+setwd("/home/bioinformatik/aging/")
 gtf <- read.csv("annots_original/Mus_musculus.GRCm38.87.chr.sorted.chr.gtf",header=F,skip=5,sep="\t")
 table(gtf$V3)
 
 gtf_modified <- gtf[gtf$V3 != "Selenocysteine",]
-
-#chr_new <- as.character(gtf_modified$V1)
-#chr_new <- paste("chr",chr_new,sep="")
 
 ffile <- file("annots_mats/Mus_musculus.GRCm38.87.chr.sorted.chr.modified.gtf","w")
 writeLines(paste(gtf_modified$V1,gtf_modified$V2,gtf_modified$V3,gtf_modified$V4,gtf_modified$V5,
@@ -34,77 +17,10 @@ close(ffile)
 
 
 
-## for nfu:
-
-gtf <- read.csv("annots_original/nothobranchius_furzeri_annotation.gff",header=F,skip=5,sep="\t")
-table(gtf$V3)
-
-gtf_modified <- gtf[gtf$V3 != "pre_miRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "mature_miRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "lncRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "ncRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "ribozyme",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "rRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "snoRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "snRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "sRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "tRNA",]
-
-
-ffile <- file("nothobranchius_furzeri_annotation.modified.gtf","w")
-writeLines(paste(gtf_modified$V1,gtf_modified$V2,gtf_modified$V3,gtf_modified$V4,gtf_modified$V5,
-                 gtf_modified$V6,gtf_modified$V7,gtf_modified$V6,gtf_modified$V9,sep="\t"),ffile)
-close(ffile)
-
-
-
-gtf <- read.csv("annots_original/nothobranchius_furzeri_annotation.gff",header=F,skip=5,sep="\t")
-table(gtf$V3)
-
-gtf_modified <- gtf[gtf$V3 != "pre_miRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "mature_miRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "lncRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "ncRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "ribozyme",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "rRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "snoRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "snRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "sRNA",]
-gtf_modified <- gtf_modified[gtf_modified$V3 != "tRNA",]
-
-table(gtf_modified$V3)
-
-
-ffile <- file("nothobranchius_furzeri_annotation.modified.gff3","w")
-writeLines(paste(gtf_modified$V1,gtf_modified$V2,gtf_modified$V3,gtf_modified$V4,gtf_modified$V5,
-                 gtf_modified$V6,gtf_modified$V7,gtf_modified$V6,gtf_modified$V9,sep="\t"),ffile)
-close(ffile)
-
-## prak27@dessert:~$ /mnt/prostlocal/programs/cufflinks/2.2.1/gffread nothobranchius_furzeri_annotation.modified.gff3 -T -o nothobranchius_furzeri_annotation.modified.gtf
-
-setwd("/home/bioinformatik/Hacken2017/")
-gtf <- read.csv("annots_original/Homo_sapiens.GRCh38.85.chr.sorted.nochr.gtf",header=F,skip=5,sep="\t")
-
-table(gtf$V3)
-
-gtf_modified <- gtf[gtf$V3 != "Selenocysteine",]
-
-ffile <- file("annots_mats/Homo_sapiens.GRCh38.85.chr.sorted.nochr.modified.gtf","w")
-writeLines(paste(gtf_modified$V1,gtf_modified$V2,gtf_modified$V3,gtf_modified$V4,gtf_modified$V5,
-                 gtf_modified$V6,gtf_modified$V7,gtf_modified$V8,gtf_modified$V9,sep="\t"),ffile)
-close(ffile)
-
-
-
-
-
-
 # source("http://bioconductor.org/biocLite.R")
 # biocLite("rtracklayer")
 
 #library(rtracklayer)
-
-#setwd("/media/patricia/UDISK/annotation_stats/L.corymbifera/")
 
 ## import gene annotation ####
 ## gff3 file
@@ -451,9 +367,9 @@ if(length(multiple_exons) == 0){
                 }
               }
               ## sonst noch was ?? 
-            } ## Z. 252
-          } ## Z.250
-        } ## Z.243
+            } 
+          } 
+        } 
         
         if(length(subset_current_transcripts[[1]]) != length(subset_current_transcripts[[j]])){
           ## we have ES or/and IR events (and maybe additionally A3E, A5E, MXE..)
