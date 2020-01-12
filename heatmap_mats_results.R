@@ -3,8 +3,7 @@ library(RColorBrewer)
 
 ## matrix for each species with values of v1,v2,v3 for heatmap
 
-#setwd("/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/results_mats/")
-setwd("/home/trice/Phd/Hacken2017/output_mats/results_mats_fromHolyList//")
+setwd("/home/output_mats/results_mats_fromHolyList/")
 
 
 species <- c("dre","hsa","mmu","nfu")
