@@ -3,8 +3,7 @@ library("VennDiagram")
 
 ## venn diagram of overlapping as genes in different tissues
 
-#setwd("/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/results_mats/")
-setwd("/home/trice/Phd/Hacken2017/output_mats/results_mats_fromHolyList/")
+setwd("/home/aging/output_mats/results_mats_fromHolyList/")
 
 species <- c("dre","hsa","mmu","nfu")
 
@@ -12,7 +11,7 @@ v1_all <- list(dre_v1=c("12vs36","24vs36"),hsa_v1=c("29vs65","50vs65"),mmu_v1=c(
 v2_all <- list(dre_v2=c("12vs42","24vs42"),hsa_v2=c("29vs80","50vs80"),mmu_v2=c("09vs30","15vs30"),nfu_v2=c("12vs39","20vs39"))
 v3_all <- list(dre_v3=c("36vs42"),hsa_v3=c("65vs80"),mmu_v3=c("24vs30"),nfu_v3=c("27vs39"))
 
-holy_list <- read.csv("/home/trice/Phd/Hacken2017/output_mats/mats_holy_list.csv")
+holy_list <- read.csv("/home/aging/output_mats/mats_holy_list.csv")
 
 for(sp in species){
   holy_list_sp <- holy_list[holy_list$species == sp,]
