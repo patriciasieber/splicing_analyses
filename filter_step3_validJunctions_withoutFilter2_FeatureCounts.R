@@ -7,8 +7,8 @@ library(GenomicAlignments)
 library(parallel)
 
 
-location_as_analysis <- "/home/patricia/run_filter/A_fumigatus/KatrinLapp/"
-location_bams <- "/home/patricia/run_filter/A_fumigatus/KatrinLapp/bams/"
+location_as_analysis <- "/home/patricia/run_filter/A_fumigatus/"
+location_bams <- "/home/patricia/run_filter/A_fumigatus/bams/"
 
 setwd(location_as_analysis)
 
