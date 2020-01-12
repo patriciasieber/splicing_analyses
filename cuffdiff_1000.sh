@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## modify:
-output_dir="/home/prak27/cuffdiff_test"
+output_dir="/home/cuffdiff_test"
 numThreads=60
 
 ## input
@@ -21,17 +21,17 @@ path2="/mappings/polyA/tophat2/normal_aging/"
 ## read time points and files
 	
 case "$species" in
-danio_rerio) 	fasta_file="/mnt/fass2/hacken_2017/danio_rerio/genome/Danio_rerio.GRCz10.genome.fa"
-		gtf_file="/mnt/fass2/hacken_2017/danio_rerio/annotation/Danio_rerio.GRCz10.release83.annotation.gtf"
+danio_rerio) 	fasta_file="/mnt/aging_splicing/danio_rerio/genome/Danio_rerio.GRCz10.genome.fa"
+		gtf_file="/mnt/aging_splicing/danio_rerio/annotation/Danio_rerio.GRCz10.release83.annotation.gtf"
 		;;
-homo_sapiens) 	fasta_file="/mnt/fass2/hacken_2017/homo_sapiens/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
-		gtf_file="/mnt/fass2/hacken_2017/homo_sapiens/annotation/Homo_sapiens.GRCh38.85.chr.sorted.gtf"
+homo_sapiens) 	fasta_file="/mnt/aging_splicing/homo_sapiens/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
+		gtf_file="/mnt/aging_splicing/homo_sapiens/annotation/Homo_sapiens.GRCh38.85.chr.sorted.gtf"
 		;;
-mus_musculus) 	fasta_file="/mnt/fass2/hacken_2017/mus_musculus/genome/Mus_musculus.GRCm38.fa"
-		gtf_file="/mnt/fass2/hacken_2017/mus_musculus/annotation/Mus_musculus.GRCm38.87.chr.sorted.chr.gtf"
+mus_musculus) 	fasta_file="/mnt/aging_splicing/mus_musculus/genome/Mus_musculus.GRCm38.fa"
+		gtf_file="/mnt/aging_splicing/mus_musculus/annotation/Mus_musculus.GRCm38.87.chr.sorted.chr.gtf"
 		;;
-nothobranchius_furzeri) fasta_file="/mnt/fass2/hacken_2017/nothobranchius_furzeri/genome/nothobranchius_furzeri_platzer.fa"
-		gtf_file="/mnt/fass2/hacken_2017/nothobranchius_furzeri/annotation/nothobranchius_furzeri_annotation.sorted.gff"
+nothobranchius_furzeri) fasta_file="/mnt/aging_splicing/nothobranchius_furzeri/genome/nothobranchius_furzeri_platzer.fa"
+		gtf_file="/mnt/aging_splicing/nothobranchius_furzeri/annotation/nothobranchius_furzeri_annotation.sorted.gff"
 		;;
 esac
 	
