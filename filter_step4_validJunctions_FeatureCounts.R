@@ -8,8 +8,8 @@ library(GenomicAlignments)
 library(parallel)
 
 
-location_as_analysis <- "/home/psieber/rnaseq_analysis/A_fumigatus/FalkHillmann/"
-location_bams <- "/sbidata/psieber/AlternativeSplicing/A_fumigatus/FalkHillmann/bams/"
+location_as_analysis <- "/home/psieber/rnaseq_analysis/A_fumigatus/"
+location_bams <- "/sbidata/psieber/AlternativeSplicing/A_fumigatus/bams/"
 
 setwd(location_as_analysis)
 
@@ -105,7 +105,6 @@ import.as.events <- function(condition){
 }
 
 comparisons <- c("0min+vs15min-","0min+vs30min-","0min+vs15min[+]")
-comparisons <- c("0min+vs15min-","0min+vs30min-","0min+vs15min+")
 
 ffile <- file("filter4.log","w")
 writeLines(paste(c(" ",comparisons),collapse="\t"),ffile)
