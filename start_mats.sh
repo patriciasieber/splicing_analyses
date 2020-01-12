@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output_dir="/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/"
+output_dir="/mnt/alternative_splicing/"
 
 
 ## input
@@ -14,19 +14,19 @@ comparison=$3
 t1="$(cut -d',' -f1 <<<"$comparison")"
 t2="$(cut -d',' -f2 <<<"$comparison")"
 
-path1="/mnt/dessertlocal/emanuel/hacken_alternative_splicing/mappings/"
+path1="/mnt/alternative_splicing/mappings/"
 
 
 ## read time points and files
 	
 case "$species" in
-dre) 	gtf_file="/home/prak27/Danio_rerio.GRCz10.release83.annotation.modified.gtf"
+dre) 	gtf_file="/home/annots/Danio_rerio.GRCz10.release83.annotation.modified.gtf"
 		;;
-hsa) 	gtf_file="/home/prak27/Homo_sapiens.GRCh38.85.chr.sorted.nochr.modified.gtf"
+hsa) 	gtf_file="/home/annots/Homo_sapiens.GRCh38.85.chr.sorted.nochr.modified.gtf"
 		;;
-mmu) 	gtf_file="/home/prak27/Mus_musculus.GRCm38.87.chr.sorted.chr.modified.gtf"
+mmu) 	gtf_file="/home/annots/Mus_musculus.GRCm38.87.chr.sorted.chr.modified.gtf"
 		;;
-nfu) 	gtf_file="/home/prak27/nothobranchius_furzeri_annotation.modified.gtf"
+nfu) 	gtf_file="/home/annots/nothobranchius_furzeri_annotation.modified.gtf"
 		;;
 esac
 
@@ -60,7 +60,7 @@ t2short="$(cut -d'_' -f1 <<<"$t2")"
 comparisons="${t1short}vs${t2short}"
 
 ## run mats
-python /mnt/prostlocal/programs/rmats/3.0.8/RNASeq-MATS.py -b1 ${all_files_cond1} -b2 ${all_files_cond2} -gtf ${gtf_file} -o "${output_dir}/${species}/${tissue}/${comparisons}" -t single -len 50
+python /mnt/programs/rmats/3.0.8/RNASeq-MATS.py -b1 ${all_files_cond1} -b2 ${all_files_cond2} -gtf ${gtf_file} -o "${output_dir}/${species}/${tissue}/${comparisons}" -t single -len 50
 
 rm -rf "${output_dir}/${species}/${tissue}/${comparisons}/SAMPLE_1"
 rm -rf "${output_dir}/${species}/${tissue}/${comparisons}/SAMPLE_2"
