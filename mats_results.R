@@ -1,4 +1,4 @@
-location_as_analysis <- "/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/"
+location_as_analysis <- "/mnt/alternative_splicing/"
 setwd(location_as_analysis)
 
 
@@ -60,7 +60,7 @@ for(sp in species){
 
 
 ## csv of all species, tissues, and splice patterns ## the holy list ####
-location_as_analysis <- "/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/"
+location_as_analysis <- "/mnt/alternative_splicing/"
 setwd(location_as_analysis)
 
 species <- c("dre","hsa","mmu","nfu")
@@ -97,7 +97,7 @@ for(sp in species){
 
 colnames(holy_list) <- c("species","tissue","comparison","splicing_pattern","gene_id","chr","strand","PValue","FDR","IncLevel1","IncLevel2","IncLevelDifference")
 
-write.csv(holy_list,file="/mnt/dessertlocal/emanuel/hacken_alternative_splicing/differential_splicing/results_mats/mats_holy_list.csv",row.names=F,quote=T)
+write.csv(holy_list,file="/mnt/alternative_splicing/results_mats/mats_holy_list.csv",row.names=F,quote=T)
 
 
 
