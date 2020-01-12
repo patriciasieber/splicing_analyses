@@ -11,9 +11,9 @@ library(rtracklayer)
 #input_file <- "path/to/file_list"
 #path_to_fasta <- "path/to/fasta"
 
-path_to_fasta <- "/data/PhD/tool_comparison/A_fumigatus/Aspergillus_fumigatusa1163.CADRE.31.dna.toplevel.fa"
+path_to_fasta <- "/data/comparison/A_fumigatus/Aspergillus_fumigatusa1163.CADRE.31.dna.toplevel.fa"
 
-working_dir <- "/data/PhD/tool_comparison/A_fumigatus/KatrinLapp/isoforms_gtf_correctedWithCuffdiff/"
+working_dir <- "/data/comparison/A_fumigatus/KatrinLapp/isoforms_gtf/"
 gene_name <- "AFUB_057840"
 system(paste0("mkdir ",working_dir,"/",gene_name))
 setwd(paste0(working_dir,"/",gene_name))
